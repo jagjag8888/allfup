@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fupforalla.se - Officiella Förundersökningar</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --hover-bg: #2563eb15;
+            --success: #22c55e;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--accent);
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+        header p {
+            color: var(--text-muted);
+            margin: 8px 0 0 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .search-box input {
+            width: 100%;
+            max-width: 700px;
+            padding: 14px 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box input:focus {
+            border-color: var(--accent);
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .grid-layout { grid-template-columns: 1fr; }
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            color: var(--accent);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li.doc-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        li.doc-item:last-child { border-bottom: none; }
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .doc-title {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .btn {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            border-color: var(--accent);
+            background-color: var(--hover-bg);
+        }
+        .btn-unlock {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+        }
+        .btn-unlock:hover {
+            background-color: rgba(34, 197, 94, 0.2);
+            border-color: #4ade80;
+        }
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+        }
+        .region-btn {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            color: var(--text-main);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .region-btn:hover {
+            border-color: var(--accent);
+            background-color: var(--hover-bg);
+        }
+        .crypto-box {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            color: var(--accent);
+            margin-top: 8px;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>fupforalla.se</h1>
+    <p>Officiella förundersökningsprotokoll och rättsliga dokument</p>
+</header>
+
+<div class="container">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Sök på målnummer, brottstyp eller region..." onkeyup="filterDocuments()">
+    </div>
+
+    <div class="grid-layout">
+        <!-- Vänster kolumn: Dokumentlista med gratis / låsta alternativ -->
+        <div>
+            <div class="card">
+                <h2>🔥 Senaste uppladdningarna</h2>
+                <ul id="docList">
+                    
+                    <li class="doc-item" data-search="stockholm narkotikabrott bedrägeri b 982-24">
+                        <div class="doc-header">
+                            <span class="doc-title">Stockholms TR B 982-24 FUP</span>
+                            <span class="tag">Stockholm</span>
+                        </div>
+                        <small style="color: var(--text-muted);">Mål rörande narkotikabrott och bedrägeri</small>
+                        <div class="btn-group">
+                            <a href="https://web.archive.org/" target="_blank" class="btn">📄 Läs 3 första sidor (Gratis)</a>
+                            <a href="#donate" class="btn btn-unlock" onclick="alert('Skicka en donation till nedanstående krypto-adress och kontakta oss för att låsa upp hela akten!')">🔒 Lås upp hela akten (Donation)</a>
+                        </div>
+                    </li>
+
+                    <li class="doc-item" data-search="göteborg datarekonstruktion teknisk bilaga b 2674-22">
+                        <div class="doc-header">
+                            <span class="doc-title">Göteborgs TR B 2674-22 Bilaga</span>
+                            <span class="tag">Göteborg</span>
+                        </div>
+                        <small style="color: var(--text-muted);">Teknisk utredning och datarekonstruktion</small>
+                        <div class="btn-group">
+                            <a href="https://web.archive.org/" target="_blank" class="btn">📄 Läs 3 första sidor (Gratis)</a>
+                            <a href="#donate" class="btn btn-unlock" onclick="alert('Skicka en donation till nedanstående krypto-adress och kontakta oss för att låsa upp hela akten!')">🔒 Lås upp hela akten (Donation)</a>
+                        </div>
+                    </li>
+
+                    <li class="doc-item" data-search="malmö smuggling penningtvätt b 1412-23">
+                        <div class="doc-header">
+                            <span class="doc-title">Malmö TR B 1412
